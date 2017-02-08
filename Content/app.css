@@ -3,3 +3,8 @@
 body {
   padding-bottom: 70px;
   }
+
+.divider {
+  margin: 15px 0px;
+  border: 1px solid black;
+}

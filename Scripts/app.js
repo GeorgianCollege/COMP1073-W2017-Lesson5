@@ -6,7 +6,7 @@
 (function () { // Beginning of the IIFE
 
   console.log("App Started...");
-  console.info("Page Title: " + document.title);
+  console.info(`Page Title: ${document.title}`); // string interpolation
 
   switch (document.title) {
     case "Home":
@@ -25,7 +25,8 @@
       let FirstParagraph = document.getElementById("FirstParagraph");
 
       // STEP 2 - create a variable that contains your content (content variable)
-      let myContent = "It was a sunny day in Florida. It felt great. I love the sun.";
+      let myContent = `It was a sunny day in Florida.
+      It felt great. I love the sun.`;
 
       // STEP 3 - assign the variable with your content to the
       // textContent propery of the reference variable
@@ -33,8 +34,8 @@
 
       let SecondParagraph = document.getElementById("SecondParagraph");
 
-      let myHTMLContent = "<h2>Second Heading</h2>"
-        + " <p>This is an inner paragraph to the Second Paragraph</p>";
+      let myHTMLContent = `<h2>Second Heading</h2>
+                          <p>This is an inner paragraph to the Second Paragraph</p>`;
 
       SecondParagraph.innerHTML = myHTMLContent;
 
@@ -53,27 +54,33 @@
 
     case "Projects":
 
-      let myVariable1 = 10;
-      let myVariable2 = 20;
-      let myVariable3 = 30;
-      let myVariable4 = 40;
+      // Step 1 - Setup references to the elements you need to hook into
+      let HideButton = document.getElementById("HideButton");
+      let HalfSizeButton = document.getElementById("HalfSizeButton");
+      let ThreeQuarterSizeButton = document.getElementById("ThreeQuarterSizeButton");
+      let ShowButton = document.getElementById("ShowButton");
+      let FirstProjectImage = document.getElementById("FirstProjectImage");
 
-      let myArray = ["a value", "another value", 10, true];
+      // Step 2 - Setup event listeners (register event listeners) for each elements
+      HideButton.addEventListener("click", function(){
+        FirstProjectImage.style.display = "none";
+      });
 
-      console.log("Outer: " + myVariable1);
+      HalfSizeButton.addEventListener("click", function(){
+        FirstProjectImage.style.maxWidth = "50%";
+      });
 
-      console.log("Parent Value: " + Parent(myVariable1, myVariable2, myVariable2, myVariable4, myVariable3));
+      ThreeQuarterSizeButton.addEventListener("click", function(){
+        FirstProjectImage.style.maxWidth = "75%";
+      });
 
-      function Parent() {
-        arguments[0] += 12;
-        console.log("Arguments: " + arguments[0]);
-
-        return arguments[0];
-
-      }
-
+      ShowButton.addEventListener("click", function(){
+        FirstProjectImage.style.display = "block";
+        FirstProjectImage.style.maxWidth = "100%";
+      });
 
       break;
+
     case "Contact":
       let FullName = document.getElementById("FullName");
       let ContactNumber = document.getElementById("ContactNumber");
