@@ -61,23 +61,37 @@
       let ShowButton = document.getElementById("ShowButton");
       let FirstProjectImage = document.getElementById("FirstProjectImage");
 
-      // Step 2 - Setup event listeners (register event listeners) for each elements
-      HideButton.addEventListener("click", function(){
-        FirstProjectImage.style.display = "none";
-      });
+      let ButtonArray = [HideButton, HalfSizeButton, ThreeQuarterSizeButton, ShowButton];
 
-      HalfSizeButton.addEventListener("click", function(){
-        FirstProjectImage.style.maxWidth = "50%";
-      });
+      // loop through the array of butttons
+      ButtonArray.forEach(function(button) {
+        // set an event listener for each button
+        button.addEventListener("click", ButtonClick);
+      }, this);
 
-      ThreeQuarterSizeButton.addEventListener("click", function(){
-        FirstProjectImage.style.maxWidth = "75%";
-      });
-
-      ShowButton.addEventListener("click", function(){
-        FirstProjectImage.style.display = "block";
-        FirstProjectImage.style.maxWidth = "100%";
-      });
+      // Use one named function, ButtonClick to respond to each of the buttons
+      function ButtonClick(event){
+          // store which button has been clicked in currentButton
+          //let currentButton = event.currentTarget; <- one way of getting a ref to the button
+          let currentButton = event.currentTarget;
+          switch(currentButton.getAttribute("id")) {
+            case "HideButton":
+              FirstProjectImage.style.display = "none";
+            break;
+            case "HalfSizeButton":
+              FirstProjectImage.style.maxWidth = "50%";
+              FirstProjectImage.style.display = "block";
+            break;
+            case "ThreeQuarterSizeButton":
+              FirstProjectImage.style.maxWidth = "75%";
+              FirstProjectImage.style.display = "block";
+            break;
+            case "ShowButton":
+              FirstProjectImage.style.display = "block";
+              FirstProjectImage.style.maxWidth = "100%";
+            break;
+          }
+        }
 
       break;
 
